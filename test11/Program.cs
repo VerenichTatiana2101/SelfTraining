@@ -1,30 +1,38 @@
-﻿string[] stringArray = new string[] { "o", "wod", "this", "is", "great" };
+﻿string[] stringArray = new string[] { "oldf", "two", "this", "is", "great" };
+
+Console.WriteLine("Введите целое число элементов массива: ");
+int number = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введённый массив строк: ");
 PrintArray(stringArray);
 Console.WriteLine();
-int size = CountSizeArray(stringArray);
+
+int size = CountSizeArray(stringArray, number);
 string[] newArray = new string[size];
-ShortStrings(stringArray, newArray);
+
+ShortStrings(stringArray, newArray, number);
+Console.WriteLine("Результат согласно условию: ");
 PrintArray(newArray);
 
-void ShortStrings(string[] array, string[] newarray)
+void ShortStrings(string[] array, string[] creatArray, int num)
 {
     int j = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <= 3)
+        if (array[i].Length <= num)
         {
-            newarray[j] = array[i];
+            creatArray[j] = array[i];
             j++;
         }
     }
 }
 
-int CountSizeArray(string[] array)
+int CountSizeArray(string[] array, int num)
 {
     int count = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <= 3)
+        if (array[i].Length <= num)
             count++;
     }
     return count;
